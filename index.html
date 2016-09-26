@@ -11,10 +11,14 @@
       #messages { list-style-type: none; margin: 0; padding: 0; }
       #messages li { padding: 5px 10px; }
       #messages li:nth-child(odd) { background: #eee; }
+      ul{height:95vh;}
+      ul{overflow:hidden; overflow-y:scroll;}
     </style>
   </head>
   <body>
-    <ul id="messages"></ul>
+    <div class="box">
+      <ul id="messages"></ul>
+    </div>
     <form action="">
       <input id="m" autocomplete="off" /><button>Send</button>
     </form>
