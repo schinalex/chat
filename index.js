@@ -12,11 +12,14 @@ io.on('connection', (socket) => {
    console.log('user disconnected')
   })
   socket.on('chat message', (msg) => {
-    io.emit('chat message', msg)
-    console.log('message> ' + msg)
+    console.log(typeof msg)
+    var address = socket.handshake.address
+    console.log(address)
+    console.log(address.address + ':' + address.port + '> ' + msg)
+    io.emit('chat message', address.adress + '> ' + msg)
   })
 })
 
-http.listen(3000, () => {
-  console.log('listening on *:3000')
+http.listen(3001, () => {
+  console.log('listening on *:3001')
 })
