@@ -8,15 +8,17 @@ app.get('/', (req, res) => {
 
 io.on('connection', (socket) => {
   console.log('a user connected')
+  var address = socket.request.socket.remoteAddress.split(':').pop()
+
   socket.on('disconnect', () => {
    console.log('user disconnected')
   })
+
   socket.on('chat message', (msg) => {
     console.log(typeof msg)
-    var address = socket.handshake.address
     console.log(address)
-    console.log(address.address + ':' + address.port + '> ' + msg)
-    io.emit('chat message', address.adress + '> ' + msg)
+    console.log(address + '> ' + msg)
+    io.emit('chat message', address + '> ' + msg)
   })
 })
 
