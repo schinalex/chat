@@ -3,6 +3,7 @@
 const app = require('express')()
 const http = require('http').Server(app)
 const io = require('socket.io')(http)
+const port = 3000
 const names = {
   '87.255.84.77': 'Dorin',
   '193.33.93.43': 'Alex',
@@ -23,11 +24,11 @@ io.on('connection', (socket) => {
   })
 
   socket.on('chat message', (msg) => {
-    console.log((names[ip] || ip) + '> ' + msg)
-    io.emit('chat message', (names[ip] || ip)+ '> ' + msg)
+    console.log((names[ip] || ip) + ': ' + msg)
+    io.emit('chat message', (names[ip] || ip)+ ': ' + msg)
   })
 })
 
-http.listen(3000, () => {
-  console.log('listening on *:3000')
+http.listen(port, () => {
+  console.log('listening on *:' + port)
 })
