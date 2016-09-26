@@ -15,8 +15,6 @@ io.on('connection', (socket) => {
   })
 
   socket.on('chat message', (msg) => {
-    console.log(typeof msg)
-    console.log(address)
     console.log(address + '> ' + msg)
     io.emit('chat message', address + '> ' + msg)
   })
